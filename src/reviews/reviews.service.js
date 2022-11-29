@@ -7,12 +7,10 @@ const addCritic = mapProperties({
   organization_name: "critic.organization_name",
 });
 
-// -- query reviews based on reviewId --
 function read(reviewId) {
   return knex("reviews").select("*").where({ review_id: reviewId }).first();
 }
 
-// -- query updated reviews by adding a new critic --
 function update(updatedReview) {
   return knex("reviews")
     .where({ review_id: updatedReview.review_id })
@@ -27,7 +25,6 @@ function update(updatedReview) {
     });
 }
 
-// -- query delete based on reviewId --
 function destroy(reviewId) {
   return knex("reviews").where({ review_id: reviewId }).del();
 }
